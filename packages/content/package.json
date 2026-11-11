@@ -1,0 +1,10 @@
+{
+  "name": "@sim/content",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "All game data (items, NPCs, arenas, encounters, modifiers) plus content-specific mechanics.",
+  "exports": { ".": "./src/index.ts" },
+  "scripts": { "typecheck": "tsc -p tsconfig.json" },
+  "dependencies": { "@sim/engine": "workspace:*", "zod": "^4.1.0" }
+}

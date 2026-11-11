@@ -1,0 +1,43 @@
+{
+  "name": "osrs-combat-sim",
+  "private": true,
+  "type": "module",
+  "packageManager": "pnpm@10.28.0",
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "dev": "pnpm --filter @sim/app dev",
+    "build": "pnpm --filter @sim/app build",
+    "preview": "pnpm --filter @sim/app preview",
+    "typecheck": "pnpm -r typecheck",
+    "lint": "eslint . && depcruise packages --config .dependency-cruiser.cjs",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "e2e": "pnpm --filter @sim/app e2e",
+    "validate-content": "tsx tools/validate-content.ts",
+    "check": "pnpm typecheck && pnpm lint && pnpm test",
+    "items:fetch": "tsx tools/items/fetch-osrs-items.ts",
+    "new:boss": "tsx tools/new-boss.ts"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.39.0",
+    "eslint": "^9.39.0",
+    "typescript-eslint": "^8.46.0",
+    "eslint-plugin-react-hooks": "^7.0.0",
+    "globals": "^16.5.0",
+    "dependency-cruiser": "^17.2.0",
+    "fast-check": "^4.3.0",
+    "tsx": "^4.20.0",
+    "typescript": "^5.9.3",
+    "vitest": "^4.0.8",
+    "@types/node": "^22.18.0",
+    "@sim/content": "workspace:*",
+    "@sim/engine": "workspace:*"
+  },
+  "pnpm": {
+    "onlyBuiltDependencies": [
+      "esbuild"
+    ]
+  }
+}

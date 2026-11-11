@@ -1,0 +1,11 @@
+export { SceneRenderer, type SceneRendererOptions } from "./renderer";
+export { OrbitCamera } from "./camera/orbit-camera";
+export { tileToWorld, worldToTile } from "./coords";
+export { lerp, ease } from "./interpolation";
+export type { VisualLookup } from "./visuals/lookup";
+export * from "./animation";
+export * from "./characters";
+export * from "./effects";
+export { EntityView, angleDelta } from "./entities/entity-view";
+export { tileNoise } from "./scene/arena-builder";
+export { compareRenderToSnapshot, type RenderState } from "./debug/consistency";

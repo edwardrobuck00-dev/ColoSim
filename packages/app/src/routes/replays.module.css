@@ -1,0 +1,18 @@
+.page { max-width: 72rem; margin: 0 auto; padding: 2rem 1.5rem; width: 100%; overflow: auto; }
+.head { display: flex; align-items: baseline; gap: 1rem; }
+.head h1 { margin: 0; }
+.note { color: var(--text-dim); max-width: 50rem; }
+.error { color: var(--hp); }
+.table { width: 100%; border-collapse: collapse; font-size: 0.9rem; }
+.table th, .table td { padding: 0.4rem 0.5rem; border-bottom: 1px solid var(--border); text-align: left; vertical-align: middle; }
+.table th { color: var(--accent); font-family: var(--game-font); font-weight: 400; }
+.table small { color: var(--text-dim); }
+.table td[data-result="win"] { color: #6fd36f; }
+.table td[data-result="loss"] { color: #e57373; }
+.actions { display: flex; gap: 0.3rem; flex-wrap: wrap; align-items: center; }
+.button {
+  all: unset; cursor: pointer; padding: 0.15rem 0.6rem; font-family: var(--game-font); color: #ff981f; text-shadow: 1px 1px 0 #000;
+  background: linear-gradient(#5f5240, #463c2d); border: 1px solid #000; text-decoration: none;
+}
+.button:focus-visible { outline: 1px solid #ffff00; }
+.check { font-size: 0.8rem; color: var(--text-dim); }

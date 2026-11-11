@@ -1,0 +1,11 @@
+{
+  "name": "@sim/storage",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Persistent user data: settings (localStorage) and loadouts, replays, attempts (IndexedDB via Dexie).",
+  "exports": { ".": "./src/index.ts" },
+  "scripts": { "typecheck": "tsc -p tsconfig.json" },
+  "dependencies": { "@sim/engine": "workspace:*", "dexie": "^4.2.0", "zod": "^4.1.0" },
+  "devDependencies": { "fake-indexeddb": "^6.2.0" }
+}

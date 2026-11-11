@@ -1,0 +1,88 @@
+.window {
+  position: absolute; top: 4.2rem; left: 0.6rem; width: min(46rem, calc(100% - 1.2rem)); bottom: 11.4rem; z-index: 5;
+  display: flex; flex-direction: column;
+  font-family: "Pixelify Sans", "Trebuchet MS", system-ui, sans-serif; color: #ff981f; text-shadow: 1px 1px 0 #000;
+  background: repeating-linear-gradient(0deg, #00000010 0 2px, transparent 2px 5px), #3e3529f2;
+  border: 3px solid #1b1610; box-shadow: inset 0 0 0 1px #5f5240, 0 6px 24px #000a;
+}
+.head { display: flex; justify-content: space-between; align-items: stretch; background: #1b1610; }
+.tabs { display: flex; gap: 2px; padding: 3px; }
+.tabs button, .cats button, .more {
+  all: unset; cursor: pointer; padding: 0.15rem 0.7rem; font-size: 0.9rem; color: #ff981f;
+  background: linear-gradient(#5f5240, #463c2d); border: 1px solid #000;
+}
+.tabs button[aria-selected="true"] { color: #fff; background: linear-gradient(#7a2a1c, #571d13); }
+.close { all: unset; cursor: pointer; padding: 0 0.7rem; font-size: 1.3rem; color: #ff981f; }
+.close:hover { color: #fff; }
+.tabs button:focus-visible, .close:focus-visible, .cats button:focus-visible { outline: 1px solid #ffff00; }
+.body { flex: 1; min-height: 0; overflow: auto; padding: 0.5rem 0.7rem; }
+
+.statsGrid { display: grid; grid-template-columns: repeat(auto-fit, minmax(19rem, 1fr)); gap: 0.4rem 1.2rem; }
+.statsGrid h4 { margin: 0.3rem 0 0.15rem; color: #ffff00; font-weight: 400; font-size: 0.95rem; }
+.statsGrid dl { margin: 0; }
+.wide { grid-column: 1 / -1; }
+.row { display: flex; justify-content: space-between; gap: 0.8rem; font-size: 0.85rem; border-bottom: 1px solid #00000040; padding: 0.05rem 0; }
+.row dt { color: #ff981f; white-space: pre; }
+.row dd { margin: 0; color: #fff; text-align: right; font-variant-numeric: tabular-nums; }
+.link { all: unset; cursor: pointer; text-decoration: underline dotted; }
+.link:hover { color: #ffff00; }
+.note { grid-column: 1 / -1; color: #c8b896; font-size: 0.75rem; margin: 0.4rem 0 0; }
+
+.log { display: flex; flex-direction: column; gap: 0.35rem; height: 100%; min-height: 0; }
+.filters { display: flex; gap: 0.5rem; align-items: center; flex-wrap: wrap; font-size: 0.85rem; }
+.filters select, .filters input[type="search"] { font: inherit; font-size: 0.85rem; padding: 0.1rem 0.3rem; background: #1b1610; color: #ffff00; border: 1px solid #5f5240; }
+.preset, .check { display: flex; gap: 0.3rem; align-items: center; }
+.count { margin-left: auto; color: #c8b896; }
+.cats { display: flex; flex-wrap: wrap; gap: 2px; }
+.cats button { font-size: 0.75rem; padding: 0.05rem 0.45rem; opacity: 0.55; }
+.cats button[aria-pressed="true"] { opacity: 1; }
+.split { flex: 1; min-height: 0; display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr); gap: 0.5rem; }
+.rows { list-style: none; margin: 0; padding: 0; overflow-y: auto; background: #00000030; border: 1px solid #00000080; font-size: 0.82rem; }
+.rowButton { all: unset; box-sizing: border-box; cursor: pointer; width: 100%; display: grid; grid-template-columns: 2.8rem 3.4rem 1fr; gap: 0.3rem; padding: 0.05rem 0.35rem; color: #f0e6cc; }
+.rowButton:hover { background: #ffffff10; }
+.rowButton[aria-pressed="true"] { background: #7a2a1c; }
+.rowButton:focus-visible { outline: 1px solid #ffff00; outline-offset: -1px; }
+.rowButton[data-cat="damage-dealt"] .title { color: #9fe88a; }
+.rowButton[data-cat="damage-taken"] .title { color: #ff8a7a; }
+.rowButton[data-cat="boss"] .title { color: #ffb347; }
+.rowButton[data-cat="prayer"] .title { color: #8ad8ff; }
+.rowButton[data-cat="consumable"] .title { color: #e8d870; }
+.rowButton[data-cat="special"] .title { color: #ffff00; }
+.rowButton[data-cat="warning"] .title { color: #ff4a3a; }
+.tick { color: #ffff00; text-align: right; font-variant-numeric: tabular-nums; }
+.time { color: #c8b896; font-variant-numeric: tabular-nums; }
+.title { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.more { margin: 0.2rem; font-size: 0.75rem; }
+.empty { color: #c8b896; padding: 0.4rem; font-size: 0.85rem; }
+.detail { overflow-y: auto; background: #00000030; border: 1px solid #00000080; padding: 0.4rem 0.6rem; font-size: 0.85rem; }
+.detail h5 { margin: 0; color: #fff; font-weight: 400; font-size: 1rem; }
+.detail h6 { margin: 0.5rem 0 0.15rem; color: #ffff00; font-weight: 400; font-size: 0.85rem; }
+.meta { margin: 0.15rem 0 0; color: #c8b896; font-size: 0.75rem; }
+.why { margin: 0; padding-left: 1.1rem; color: #f0e6cc; display: grid; gap: 0.2rem; text-shadow: none; font-family: system-ui, sans-serif; font-size: 0.82rem; }
+.facts { margin: 0.5rem 0 0; display: grid; gap: 0.05rem; }
+.facts div { display: flex; justify-content: space-between; gap: 0.6rem; border-bottom: 1px solid #00000040; }
+.facts dt { color: #ff981f; }
+.facts dd { margin: 0; color: #fff; font-variant-numeric: tabular-nums; }
+.detail details { margin-top: 0.5rem; }
+.detail summary { cursor: pointer; color: #c8b896; font-size: 0.75rem; }
+.detail pre { font-size: 0.7rem; color: #d8d0b8; text-shadow: none; white-space: pre-wrap; word-break: break-all; margin: 0.2rem 0 0; }
+
+.inspector { display: grid; gap: 0.5rem; font-size: 0.85rem; }
+.inspector h4 { margin: 0.2rem 0; color: #ffff00; font-weight: 400; font-size: 0.95rem; }
+.inspectorHead { display: flex; align-items: center; gap: 0.5rem; }
+.inspectorHead h5 { margin: 0; color: #fff; font-weight: 400; font-size: 1.05rem; }
+.inspectorHead button, .goto { all: unset; cursor: pointer; padding: 0 0.6rem; color: #ff981f; background: linear-gradient(#5f5240, #463c2d); border: 1px solid #000; }
+.inspectorHead button:disabled { opacity: 0.4; cursor: default; }
+.goto { margin-top: 0.35rem; font-size: 0.8rem; }
+.hash { margin-left: auto; color: #8f8068; font-size: 0.72rem; font-family: ui-monospace, monospace; text-shadow: none; }
+.twoCol { display: grid; grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr)); gap: 0.6rem; }
+.plain { margin: 0; padding-left: 1.1rem; color: #f0e6cc; }
+.tickEvents { list-style: none; margin: 0; padding: 0; display: grid; gap: 1px; }
+.tickEvents > li > button { all: unset; cursor: pointer; display: block; width: 100%; color: #f0e6cc; padding: 0.05rem 0.3rem; }
+.tickEvents > li > button:hover { background: #ffffff10; }
+.tickEvents > li[data-cat="damage-dealt"] > button { color: #9fe88a; }
+.tickEvents > li[data-cat="damage-taken"] > button { color: #ff8a7a; }
+.tickEvents > li[data-cat="boss"] > button { color: #ffb347; }
+.tickEvents > li[data-cat="prayer"] > button { color: #8ad8ff; }
+.tickWhy { padding: 0.2rem 0.4rem 0.4rem 1rem; text-shadow: none; font-family: system-ui, sans-serif; font-size: 0.8rem; color: #f0e6cc; }
+.tickWhy ol { margin: 0; padding-left: 1rem; }

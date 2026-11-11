@@ -1,0 +1,71 @@
+.side { display: flex; flex-direction: column; min-height: 0; background: var(--surface); border-left: 1px solid var(--border); }
+.body { flex: 1; min-height: 0; overflow: auto; padding: 0.75rem; }
+.stack { display: grid; gap: 1rem; }
+
+.log { display: flex; flex-direction: column; height: 100%; gap: 0.5rem; }
+.filters { display: flex; flex-wrap: wrap; gap: 0.3rem 0.8rem; font-size: 0.75rem; color: var(--text-dim); }
+.logList { list-style: none; margin: 0; padding: 0; overflow: auto; flex: 1; font-size: 0.82rem; display: grid; align-content: start; gap: 0.15rem; }
+.logList li[data-category="mechanic"] { color: #f0a868; }
+.logList li[data-category="warning"] { color: #e57373; }
+.logList li[data-category="system"] { color: var(--text-dim); }
+.logList li[data-category="combat"] { color: #e8d9b5; }
+.logTick { display: inline-block; min-width: 2.5rem; color: var(--text-faint); font-variant-numeric: tabular-nums; }
+.empty { color: var(--text-faint); }
+
+.slots { list-style: none; margin: 0; padding: 0; display: grid; gap: 0.2rem; font-size: 0.85rem; }
+.slots li { display: flex; justify-content: space-between; padding: 0.25rem 0.4rem; border-radius: 4px; background: var(--surface-2); }
+.slots li[data-empty="true"] { color: var(--text-faint); }
+.slotName { text-transform: capitalize; color: var(--text-dim); }
+
+.bonusTable { width: 100%; border-collapse: collapse; font-size: 0.8rem; }
+.bonusTable th, .bonusTable td { padding: 0.2rem 0.4rem; text-align: right; border-bottom: 1px solid var(--border); }
+.bonusTable th:first-child { text-align: left; text-transform: capitalize; color: var(--text-dim); font-weight: normal; }
+
+.inventory { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 0.3rem; }
+.inventory li { aspect-ratio: 1; display: grid; place-items: center; border-radius: 4px; background: var(--surface-2); font-size: 0.75rem; font-weight: 600; border: 1px solid var(--border); }
+.inventory li[data-empty="true"] { background: #0003; border-style: dashed; }
+.note { color: var(--text-faint); font-size: 0.75rem; }
+
+.stats { margin: 0; display: grid; gap: 0.25rem; font-size: 0.85rem; }
+.stats div { display: flex; justify-content: space-between; padding: 0.25rem 0.4rem; background: var(--surface-2); border-radius: 4px; }
+.stats dt { color: var(--text-dim); }
+.stats dd { margin: 0; font-variant-numeric: tabular-nums; }
+.subhead { margin: 0; font-size: 0.95rem; }
+.styleGrid { display: grid; grid-template-columns: 1fr 1fr; gap: 0.35rem; }
+.styleButton, .prayerButton, .specButton {
+  font: inherit; text-align: left; display: grid; gap: 0.1rem; padding: 0.45rem 0.55rem; cursor: pointer;
+  background: var(--surface-2); color: var(--text); border: 1px solid var(--border); border-radius: 6px;
+}
+.styleButton small, .prayerButton small { color: var(--text-dim); font-size: 0.72rem; text-transform: capitalize; }
+.styleButton[aria-pressed="true"], .prayerButton[aria-pressed="true"] { border-color: var(--accent); background: #3a3220; }
+.prayerButton[aria-pressed="true"] { border-color: var(--prayer); background: #1d2f3d; }
+.prayerButton:disabled, .specButton:disabled { opacity: 0.45; cursor: not-allowed; }
+.prayerGrid { display: grid; grid-template-columns: 1fr 1fr; gap: 0.3rem; }
+.prayerButton { font-size: 0.8rem; }
+.specButton { width: 100%; margin-top: 0.4rem; text-align: center; }
+.specButton[aria-pressed="true"] { border-color: var(--special); background: #1f3a24; }
+.field { display: grid; gap: 0.3rem; font-size: 0.85rem; color: var(--text-dim); }
+.field select { font: inherit; padding: 0.4rem; background: var(--surface-2); color: var(--text); border: 1px solid var(--border); border-radius: 6px; }
+.invButton { all: unset; box-sizing: border-box; width: 100%; height: 100%; display: grid; place-items: center; position: relative; cursor: pointer; padding: 2px; text-align: center; }
+.invButton:hover { background: #ffffff10; }
+.invButton:focus-visible { outline: 2px solid var(--accent); }
+.invName { font-size: 0.62rem; line-height: 1.1; font-weight: 500; overflow: hidden; overflow-wrap: anywhere; }
+.qty { position: absolute; top: 1px; left: 3px; font-size: 0.62rem; color: #ffd84a; font-weight: 700; }
+.linkButton { all: unset; cursor: pointer; text-align: right; }
+.linkButton:hover { color: var(--accent); text-decoration: underline; }
+.stats dd[data-change="up"] { color: #6fd36f; }
+.stats dd[data-change="down"] { color: #e57373; }
+.warning { margin: 0; padding: 0.4rem 0.55rem; border-radius: 6px; background: #3d1f1f; color: #f0a0a0; font-size: 0.8rem; }
+.configTable { width: 100%; border-collapse: collapse; font-size: 0.85rem; }
+.configTable th, .configTable td { padding: 0.2rem 0.3rem; text-align: left; }
+.configTable thead th { color: var(--text-faint); font-weight: 500; font-size: 0.75rem; }
+.configTable tbody th { color: var(--text-dim); font-weight: 400; }
+.configTable td[data-change="up"] input { color: #6fd36f; }
+.configTable td[data-change="down"] input { color: #e57373; }
+.levelInput {
+  width: 4.2rem; font: inherit; font-variant-numeric: tabular-nums; padding: 0.25rem 0.35rem;
+  background: var(--surface-2); color: var(--text); border: 1px solid var(--border); border-radius: 4px;
+}
+.levelInput:focus-visible { outline: 2px solid var(--accent); }
+.prayerButton small { text-transform: none; }
+.stats div.wide { flex-direction: column; gap: 0.15rem; }

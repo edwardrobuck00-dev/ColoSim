@@ -1,0 +1,185 @@
+/*
+ * Classic game interface: dark stone frames, brown panels, orange and yellow
+ * pixel text with black shadows. Original styling built from CSS gradients.
+ */
+
+.side {
+  --stone-1: #1b1610;
+  --stone-2: #2e271d;
+  --stone-3: #463c2d;
+  --stone-4: #5f5240;
+  --panel: #3e3529;
+  --panel-2: #4a4033;
+  --orange: #ff981f;
+  --yellow: #ffff00;
+  --green: #0dc10d;
+  --red: #ff2a1a;
+  --cyan: #00ffff;
+  font-family: "Pixelify Sans", "Trebuchet MS", system-ui, sans-serif;
+  font-size: 15px;
+  color: var(--orange);
+  text-shadow: 1px 1px 0 #000;
+  width: 17rem;
+  display: flex;
+  flex-direction: column;
+  background:
+    repeating-linear-gradient(45deg, #ffffff05 0 3px, #00000008 3px 6px),
+    linear-gradient(var(--stone-3), var(--stone-2));
+  border-left: 3px solid var(--stone-1);
+  box-shadow: inset 2px 0 0 var(--stone-4);
+  user-select: none;
+  min-height: 0;
+}
+
+/* ---- Minimap and orbs ---- */
+.mapArea { position: relative; height: 11.5rem; flex-shrink: 0; }
+.minimap {
+  position: absolute; right: 0.6rem; top: 0.5rem; width: 10.5rem; height: 10.5rem; border-radius: 50%;
+  border: 4px solid var(--stone-1); box-shadow: 0 0 0 3px var(--stone-4), inset 0 0 12px #000; overflow: hidden; background: #000;
+}
+.minimap canvas { display: block; width: 100%; height: 100%; }
+.compass {
+  position: absolute; right: 9.6rem; top: 0.35rem; width: 1.9rem; height: 1.9rem; border-radius: 50%;
+  background: radial-gradient(#e8dcc0, #a89878); border: 2px solid var(--stone-1); display: grid; place-items: center;
+  font-size: 0.75rem; color: #8a1010; text-shadow: none; font-weight: 700;
+}
+.orbs { position: absolute; left: 0.4rem; top: 2.4rem; display: grid; gap: 0.25rem; }
+.orb { all: unset; display: flex; align-items: center; gap: 0.2rem; cursor: default; }
+button.orb { cursor: pointer; }
+button.orb:focus-visible .orbBall { outline: 2px solid var(--yellow); }
+.orbValue {
+  min-width: 2.1rem; text-align: right; padding: 0 0.25rem; font-size: 0.85rem; line-height: 1.35;
+  background: var(--stone-1); border-radius: 3px 0 0 3px; color: var(--green);
+}
+.orbValue[data-level="mid"] { color: var(--yellow); }
+.orbValue[data-level="low"] { color: var(--red); }
+.orbBall {
+  position: relative; width: 1.75rem; height: 1.75rem; border-radius: 50%; overflow: hidden;
+  background: #111; border: 2px solid var(--stone-1); box-shadow: 0 0 0 1px var(--stone-4);
+}
+.orbFill { position: absolute; left: 0; right: 0; bottom: 0; }
+.orbBall svg { position: absolute; inset: 0; margin: auto; }
+.orb[data-active="true"] .orbBall { box-shadow: 0 0 0 2px var(--yellow); }
+
+/* ---- Tabs ---- */
+.tabRow { display: grid; grid-template-columns: repeat(4, 1fr); gap: 2px; padding: 3px 4px; background: var(--stone-1); flex-shrink: 0; }
+.tab {
+  all: unset; box-sizing: border-box; height: 2.35rem; display: grid; place-items: center; cursor: pointer; position: relative;
+  background: linear-gradient(var(--stone-4), var(--stone-3)); border: 1px solid #000; border-radius: 3px 3px 0 0;
+  box-shadow: inset 0 1px 0 #ffffff22;
+}
+.tab:hover { filter: brightness(1.12); }
+.tab:focus-visible { outline: 2px solid var(--yellow); outline-offset: -2px; }
+.tab[aria-selected="true"] { background: linear-gradient(#7a2a1c, #571d13); box-shadow: inset 0 0 0 1px #c0503a; }
+.tabKey { position: absolute; right: 2px; bottom: 0; font-size: 0.6rem; color: #d8c8a8; line-height: 1; }
+
+/* ---- Content panel ---- */
+.panel {
+  flex: 0 1 23rem; min-height: 8rem; overflow: auto; margin: 0 4px; padding: 0.5rem;
+  background:
+    radial-gradient(ellipse at 30% 20%, #ffffff08, transparent 60%),
+    repeating-linear-gradient(0deg, #00000010 0 2px, transparent 2px 5px),
+    var(--panel);
+  border: 2px solid var(--stone-1); border-top: none; border-bottom: none;
+  box-shadow: inset 0 0 18px #00000088;
+}
+.panelTitle { margin: 0 0 0.4rem; text-align: center; color: var(--orange); font-size: 1rem; font-weight: 600; }
+.dim { color: #c8b896; }
+.white { color: #fff; }
+.yellow { color: var(--yellow); }
+.small { font-size: 0.8rem; }
+.row { display: flex; justify-content: space-between; gap: 0.5rem; }
+
+/* ---- Inventory ---- */
+.inventory { list-style: none; margin: 0 auto; padding: 0; display: grid; grid-template-columns: repeat(4, 3.25rem); grid-auto-rows: 2.95rem; gap: 0.15rem 0.35rem; justify-content: center; }
+.inventory li { position: relative; display: grid; place-items: center; }
+.slotButton { all: unset; box-sizing: border-box; width: 100%; height: 100%; display: grid; place-items: center; cursor: pointer; position: relative; border-radius: 4px; }
+.slotButton:hover { background: #ffffff12; }
+.slotButton:focus-visible { outline: 1px solid var(--yellow); }
+.slotButton svg { filter: drop-shadow(1px 1px 0 #0008); }
+.qty { position: absolute; left: 0.1rem; top: -0.15rem; font-size: 0.8rem; color: var(--yellow); pointer-events: none; }
+.srOnly { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+
+/* ---- Equipment (paper doll) ---- */
+.doll {
+  display: grid; grid-template-columns: repeat(3, 2.8rem); grid-auto-rows: 2.8rem; gap: 0.35rem 0.9rem; justify-content: center;
+  grid-template-areas: ". head ." "cape neck ammo" "weapon body shield" ". legs ." "hands feet ring";
+}
+.equipSlot {
+  all: unset; box-sizing: border-box; display: grid; place-items: center; position: relative; cursor: pointer;
+  background: radial-gradient(#4f4535, #2e271d); border: 1px solid #000; border-radius: 4px; box-shadow: inset 0 0 0 1px #6a5c46;
+}
+.equipSlot[data-empty="true"] { cursor: default; }
+.equipSlot[data-empty="true"] svg { opacity: 0.22; filter: grayscale(1); }
+.equipSlot:hover:not([data-empty="true"]) { filter: brightness(1.2); }
+.bonusGrid { margin-top: 0.7rem; display: grid; grid-template-columns: 1fr 1fr; gap: 0.1rem 0.8rem; font-size: 0.78rem; }
+.bonusGrid h4 { grid-column: 1 / -1; margin: 0.35rem 0 0; color: var(--orange); font-size: 0.82rem; font-weight: 600; }
+.bonusGrid div { display: flex; justify-content: space-between; color: var(--orange); }
+.bonusGrid span:last-child { color: #fff; }
+
+/* ---- Prayer ---- */
+.prayerHead { display: flex; justify-content: space-between; align-items: center; font-size: 0.85rem; margin-bottom: 0.3rem; }
+.prayerGrid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 0.2rem; }
+.prayer {
+  all: unset; box-sizing: border-box; aspect-ratio: 1; display: grid; place-items: center; cursor: pointer; border-radius: 50%; position: relative;
+}
+.prayer svg { width: 82%; height: 82%; filter: drop-shadow(1px 1px 0 #000a); }
+.prayer[aria-pressed="true"] { background: radial-gradient(circle, #fff4c4cc 0 30%, #f0d77a66 55%, transparent 72%); }
+.prayer:disabled { cursor: not-allowed; }
+.prayer:disabled svg { opacity: 0.3; filter: grayscale(0.9); }
+.prayer:focus-visible { outline: 1px solid var(--yellow); }
+.lockNote { margin: 0 0 0.35rem; color: var(--red); font-size: 0.82rem; }
+
+/* ---- Combat ---- */
+.weaponName { text-align: center; color: var(--orange); margin: 0; }
+.weaponSub { text-align: center; margin: 0 0 0.5rem; font-size: 0.78rem; color: #c8b896; }
+.styleGrid { display: grid; grid-template-columns: 1fr 1fr; gap: 0.35rem; }
+.styleButton {
+  all: unset; box-sizing: border-box; padding: 0.45rem 0.3rem; text-align: center; cursor: pointer; display: grid; gap: 0.1rem; justify-items: center;
+  background: linear-gradient(#5a4e3c, #3b3226); border: 1px solid #000; border-radius: 3px; box-shadow: inset 0 1px 0 #ffffff1c;
+  color: var(--orange); font-size: 0.85rem;
+}
+.styleButton small { color: #d8c8a8; font-size: 0.7rem; text-transform: capitalize; }
+.styleButton[aria-pressed="true"] { background: linear-gradient(#7a2a1c, #571d13); box-shadow: inset 0 0 0 1px #c0503a; }
+.styleButton:focus-visible { outline: 1px solid var(--yellow); }
+.specBar {
+  all: unset; box-sizing: border-box; display: block; width: 100%; margin-top: 0.7rem; height: 1.6rem; position: relative; cursor: pointer;
+  background: #1a1a1a; border: 1px solid #000; box-shadow: 0 0 0 1px var(--stone-4);
+}
+.specBar:disabled { cursor: default; opacity: 0.55; }
+.specFill { position: absolute; left: 0; top: 0; bottom: 0; background: linear-gradient(#3fbf4a, #1f8a2a); }
+.specBar[aria-pressed="true"] .specFill { background: linear-gradient(#f0e04a, #c0a020); }
+.specText { position: relative; display: block; text-align: center; line-height: 1.6rem; color: #000; text-shadow: none; font-size: 0.8rem; }
+.select { font: inherit; font-size: 0.8rem; width: 100%; padding: 0.25rem; background: var(--stone-1); color: var(--orange); border: 1px solid var(--stone-4); }
+
+/* ---- Skills ---- */
+.skillGrid { display: grid; grid-template-columns: 1fr; gap: 0.25rem; }
+.skill {
+  display: grid; grid-template-columns: 1.6rem 1fr auto; align-items: center; gap: 0.4rem; padding: 0.15rem 0.4rem;
+  background: linear-gradient(#4f4535, #3a3125); border: 1px solid #000; border-radius: 3px; box-shadow: inset 0 1px 0 #ffffff14;
+}
+.skillName { color: var(--orange); font-size: 0.85rem; }
+.levels { display: flex; align-items: center; gap: 0.15rem; color: var(--yellow); }
+.levelInput {
+  width: 2.6rem; font: inherit; font-size: 0.9rem; text-align: right; color: var(--yellow); text-shadow: 1px 1px 0 #000;
+  background: transparent; border: 1px solid transparent; border-radius: 2px; padding: 0 0.15rem; -moz-appearance: textfield;
+}
+.levelInput::-webkit-inner-spin-button, .levelInput::-webkit-outer-spin-button { -webkit-appearance: none; margin: 0; }
+.levelInput:hover { border-color: #00000088; background: #00000030; }
+.levelInput:focus { outline: none; border-color: var(--yellow); background: #000000aa; }
+.levelInput[data-change="up"] { color: var(--green); }
+.levelInput[data-change="down"] { color: var(--red); }
+
+/* ---- Info / generic rows ---- */
+.list { margin: 0; display: grid; gap: 0.2rem; font-size: 0.82rem; }
+.list div { display: flex; justify-content: space-between; gap: 0.6rem; padding: 0.1rem 0.25rem; border-bottom: 1px solid #00000040; }
+.list dt { color: var(--orange); }
+.list dd { margin: 0; color: #fff; text-align: right; font-variant-numeric: tabular-nums; }
+.wide { flex-direction: column; }
+.wide dd { text-align: left; }
+.check { display: flex; gap: 0.45rem; align-items: center; font-size: 0.85rem; padding: 0.15rem 0; cursor: pointer; }
+.keyList { margin: 0.4rem 0 0; padding: 0; list-style: none; font-size: 0.78rem; display: grid; gap: 0.1rem; }
+.keyList li { display: flex; justify-content: space-between; }
+.keyList kbd { font: inherit; color: var(--yellow); }
+.link { color: var(--yellow); }
+.warning { margin: 0 0 0.4rem; color: var(--red); font-size: 0.82rem; }

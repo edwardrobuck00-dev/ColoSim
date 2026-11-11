@@ -1,0 +1,36 @@
+{
+  "name": "@sim/app",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "React application: screens, HUD, panels, input and the simulation host that wires everything together.",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc -p tsconfig.json && vite build",
+    "preview": "vite preview",
+    "typecheck": "tsc -p tsconfig.json",
+    "e2e": "playwright test"
+  },
+  "dependencies": {
+    "@fontsource/pixelify-sans": "^5.3.0",
+    "@sim/assets": "workspace:*",
+    "@sim/content": "workspace:*",
+    "@sim/engine": "workspace:*",
+    "@sim/render": "workspace:*",
+    "@sim/storage": "workspace:*",
+    "react": "^19.2.0",
+    "react-dom": "^19.2.0",
+    "react-router": "^7.9.0",
+    "zustand": "^5.0.8"
+  },
+  "devDependencies": {
+    "@playwright/test": "1.63.0",
+    "@testing-library/jest-dom": "^6.9.0",
+    "@testing-library/react": "^16.3.0",
+    "@types/react": "^19.2.0",
+    "@types/react-dom": "^19.2.0",
+    "@vitejs/plugin-react": "^5.1.0",
+    "jsdom": "^27.0.0",
+    "vite": "^7.2.0"
+  }
+}
