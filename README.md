@@ -1,15 +1,18 @@
 # Combat Simulator
 
-A browser-based, tick-based boss fight simulator with OSRS-style mechanics
-(600 ms game ticks, tile movement, prayers and accuracy rolls to come) and
-original bosses and art.
+A browser-based, tick-based boss fight simulator for practising OSRS-style
+mechanics: 600 ms game ticks, tile movement, line of sight, prayers, real
+item stats and accuracy rolls, against original bosses with original art.
 
-**Status: core engine stage.** A deterministic tick engine with attack
-cooldowns, hit and projectile timing, death and respawn; a runner with
-start, pause, resume, reset, single-tick stepping and 0.25x to 8x speed;
-seeded, reproducible fights; and a 3D arena with animated characters,
-projectiles, damage splats and health bars. Prayers, eating, boss phases and
-special mechanics come next.
+**Play it online: https://edwardrobuck00-dev.github.io/ColoSim/** (no
+installation; your saved setups and replays stay in your browser). The site
+is rebuilt automatically on every push to `main`
+(`.github/workflows/pages.yml`).
+
+**Status:** the engine, the Ashen Warden boss, 160 wiki-verified items,
+analytics, review and replays, and saved setups are complete and tested.
+See [docs/audit-report.md](docs/audit-report.md) for what is done, what is
+not modelled yet and the recommended next steps.
 
 ## Requirements
 

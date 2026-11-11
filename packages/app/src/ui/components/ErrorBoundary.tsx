@@ -13,7 +13,7 @@ export class ErrorBoundary extends Component<{ children: ReactNode }, { error: E
       <div role="alert" style={{ padding: "2rem" }}>
         <h1>Something went wrong</h1>
         <pre style={{ whiteSpace: "pre-wrap", color: "var(--hp)" }}>{this.state.error.message}</pre>
-        <a href="/">Back to start</a>
+        <a href={import.meta.env.BASE_URL}>Back to start</a>
       </div>
     );
   }

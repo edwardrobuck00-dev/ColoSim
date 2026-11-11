@@ -2,6 +2,8 @@ import react from "@vitejs/plugin-react";
 import { defineConfig } from "vite";
 
 export default defineConfig({
+  // The site's path prefix: "/" locally, "/ColoSim/" on GitHub Pages (set by the deploy workflow).
+  base: process.env.BASE_PATH ?? "/",
   plugins: [react()],
   server: { port: 5173, strictPort: false },
   preview: { port: 4173 },
